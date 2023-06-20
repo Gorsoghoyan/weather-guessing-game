@@ -1,0 +1,13 @@
+.loading {
+  margin: auto;
+  border-radius: 50%;
+  border: 3px solid #dddddd;
+  border-top-color: transparent !important;
+  animation: loading .8s ease infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}
