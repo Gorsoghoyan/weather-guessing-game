@@ -1,9 +1,9 @@
-import s from "../../assets/sass/spinner.module.scss";
+import styles from "../../assets/sass/spinner.module.scss";
 
 export default function Spinner({ size }) {
   return (
     <div
-      className={s.loading}
+      className={styles.loading}
       style={{
         width: size,
         height: size,

@@ -1,24 +1,6 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { cities } from "../../db/cities";
-
-const API_KEY = "4cf65d99fdeb1d14db18420b840d7a69";
-const BASE_URL = "https://api.openweathermap.org/data/2.5/weather?";
-
-export const fetchWeatherAPI = createAsyncThunk(
-  "game/fetchWeather",
-  async (cityName, { rejectWithValue, fulfillWithValue }) => {
-    try {
-      const response = await fetch(
-        `${BASE_URL}q=${cityName}&appid=${API_KEY}&units=metric`
-      );
-      const data = await response.json();
-      if (data.message) throw data;
-      return fulfillWithValue(data);
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
+import { cities } from "../../../db/cities";
+import { fetchWeatherAPI } from "./api";
 
 const initialState = {
   selectedCities: null,
@@ -72,14 +54,6 @@ const gameSlice = createSlice({
       });
   }
 });
-
-export const selectCities = (state) => state.game.selectedCities;
-export const selectWeather = (state) => state.game.weather;
-export const selectResults = (state) => state.game.results;
-export const selectGameOver = (state) => state.game.gameOver;
-export const selectWins = (state) => state.game.wins;
-export const selectLoading = (state) => state.game.loading;
-export const selectError = (state) => state.game.error;
 
 export const { 
   setRandomCities, 

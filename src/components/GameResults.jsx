@@ -1,28 +1,15 @@
+import { ResultItem } from ".";
 import { useSelector } from "react-redux";
-import { selectResults } from "../store/slices/gameSlice";
-import s from "../assets/sass/gameResults.module.scss";
-
-const ResultItem = ({ guess, temp, status }) => {
-  return (
-    <div
-      className={s.resultItem}
-      style={{
-        color: status === "won" ? "green" : "darkred"
-      }}
-    >
-      <h3>{guess}</h3>
-      <span>Was {temp}</span>
-    </div>
-  );
-};
+import { selectResults } from "../store/slices/game/selectors";
+import styles from "../assets/sass/gameResults.module.scss";
 
 export default function GameResults() {
   const results = useSelector(selectResults);
 
   return (
-    <div className={s.container}>
+    <div className={styles.container}>
       <hr />
-      <div className={s.results}>
+      <div className={styles.results}>
         {!!results.length && results.map((result) => (
           <ResultItem
             key={result.id}

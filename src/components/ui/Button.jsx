@@ -21,6 +21,8 @@ export default function Button({
         color: "white",
         cursor: "pointer"
       }}
-    >{children}</button>
+    >
+      {children}
+    </button>
   );
 }

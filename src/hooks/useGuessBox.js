@@ -1,16 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchWeatherAPI } from "../store/slices/game/api";
+
 import {
-  fetchWeatherAPI,
-  selectCities,
-  selectWeather,
-  setRandomCities,
-  toggleGameOver,
-  selectLoading,
-  selectError,
   setResults,
   setWins,
-} from "../store/slices/gameSlice";
+  setRandomCities,
+  toggleGameOver
+} from "../store/slices/game/gameSlice";
+
+import {
+  selectCities,
+  selectWeather,
+  selectLoading,
+  selectError,
+} from "../store/slices/game/selectors";
 
 export const useGuessBox = () => {
   const [currentCityIndex, setCurrentCityIndex] = useState(0);
